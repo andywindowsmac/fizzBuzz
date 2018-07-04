@@ -12,26 +12,24 @@ import './App.css';
 const firstSolution = () => {
   const numbers = [];
     for(let i = 1; i < 101; i++) {
-      if (i % 3 === 0 && i % 5 === 0) {
-        numbers.push(<li>FizzBuzz</li>)
-        continue;
-      }
-      if (i % 3 === 0) {
-        numbers.push(<li>Fizz</li>);
-        continue;
-      }
-      if (i % 5 === 0) {
-        numbers.push(<li>Buzz</li>);
-        continue;
-      }
-      numbers.push(<li key={i}>{i}</li>);
+      const isFizz = i % 3 === 0;
+      const isBuzz = i % 5 === 0;
+      const result = 
+        isFizz && isBuzz 
+          ? <li>FizzBuzz</li>
+          : isFizz
+            ? <li>Fizz</li>
+            : isBuzz
+              ? <li>Buzz</li>
+              : <li>{i}</li>;
+      numbers.push(result);
     }
     return numbers;
 }
 
 class App extends Component {
   renderNumber = () => {
-    
+    return firstSolution();
   }
     
 
